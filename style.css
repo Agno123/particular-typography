@@ -75,6 +75,22 @@ html {
     animation: scroll 1.5s infinite;
 }
 
+#input {
+    position: absolute;
+    top: 50px;   /* eller var du vill */
+    left: 50px;
+    z-index: 10; /* högre än canvas */
+    font-size: 24px;
+    padding: 5px;
+}
+#tile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* canvas under input */
+}
+
+
 @keyframes scroll {
     0% {
         transform: translateY(0);
