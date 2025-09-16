@@ -39,7 +39,7 @@ if (!canvas || !ctx || !textCanvas || !textCtx || !input) {
         }
     }
 
-    // Hämta koordinater från text
+    // Hämta koordinater från text d
     function getTextCords() {
         const cords = [];
         try {
