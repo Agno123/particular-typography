@@ -1,0 +1,156 @@
+// Variables
+$font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$primary-color: #ff6a00;
+$primary-hover: #ff4500;
+$background-gradient: radial-gradient(circle at top, #1a1a1a 0%, #0d0d0d 100%);
+$scroll-color: #fff;
+$scroll-shadow: rgba(255, 255, 255, 0.2);
+$input-color: #fff;
+$input-bg: rgba(255, 255, 255, 0.05);
+$input-focus-bg: rgba(255, 255, 255, 0.15);
+
+// Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-family;
+  transition: all 0.3s ease;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  background: $background-gradient;
+  color: $scroll-color;
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+// Canvas
+#tile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none; // makes sure canvas doesn't block clicks
+}
+
+// Input
+#input {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  z-index: 10;
+  font-size: 1.6rem;
+  padding: 0.7rem 1.2rem;
+  color: $input-color;
+  background-color: $input-bg;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  outline: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px);
+
+  &:focus {
+    border-color: $primary-color;
+    box-shadow: 0 4px 25px rgba($primary-color,0.5);
+    background-color: $input-focus-bg;
+    transform: scale(1.05);
+  }
+}
+
+// Hero Content
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 4rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  color: $scroll-color;
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: $scroll-color;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.6), 0 0 10px rgba($primary-color,0.3);
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+    color: rgba(255,255,255,0.85);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, $primary-color, $primary-hover);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-radius: 40px;
+    box-shadow: 0 8px 25px rgba($primary-color,0.5);
+    transform: translateY(0);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: linear-gradient(135deg, $primary-hover, $primary-color);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 30px rgba($primary-color,0.6);
+    }
+  }
+}
+
+// Scroll Indicator
+.scroll-down {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 50px;
+  border: 2px solid $scroll-color;
+  border-radius: 50px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 6px;
+  box-shadow: 0 0 15px $scroll-shadow, 0 0 30px rgba($primary-color,0.1);
+
+  span {
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: $primary-color;
+    border-radius: 50%;
+    animation: scroll 1.5s infinite;
+    box-shadow: 0 0 8px $primary-color;
+  }
+}
+
+// Scroll Animation
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(12px);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
